@@ -1,0 +1,22 @@
+body {
+    background-color: rgb(194, 206, 235);
+}
+#content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+}
+#title {
+    margin: auto;
+}
+#title h1 {
+    font-size: 100px;
+    color: rgb(54, 54, 73);
+    font-family: calibri;
+    font-weight: 200;
+
+}
