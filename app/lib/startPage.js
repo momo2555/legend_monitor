@@ -16,7 +16,7 @@ class StartPage {
         legend.onLaunch((from, game) => {
             legend.launchGame(game);
         });
-        
+        //start page change
         
     }
 }
