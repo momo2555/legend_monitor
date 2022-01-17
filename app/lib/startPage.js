@@ -14,6 +14,7 @@ class StartPage {
         legend.setState("coucou");
         
         legend.onLaunch((from, game) => {
+            console.log(game);
             legend.launchGame(game);
         });
         //start page change

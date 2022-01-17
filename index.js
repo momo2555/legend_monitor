@@ -17,11 +17,11 @@ gameServer.run();
 //launching the start page on the monitor
 launcher.startMonitor();
 //launch a test game
-setTimeout(() => {
+/*setTimeout(() => {
     console.log('launching game');
     gameServer.startLauncher(null, {
         gameId : 'pendu',
         monitor : 'monitor.html'
     });
 }, 10000);
-
+*/

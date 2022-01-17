@@ -95,7 +95,8 @@ class GameServer {
             let req = {
                 header: {
                     type: "request",
-                    from: "server"
+                    from: "server",
+                    to: "monitor"
                 },
                 request: {
                     exec: "launchGame",
