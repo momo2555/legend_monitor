@@ -33,6 +33,7 @@ class GameServer {
                             case "identification":
                                 let id = data.header.from;
                                 //save the connection
+                                console.log("identification: " + id);
                                 this.client[id] = ws;
                                 break;
                             case "changeState":
@@ -77,7 +78,7 @@ class GameServer {
             data: data
         }
         //stringify
-        strDataTosend = JSON.stringify(this.dataExchange);
+        let strDataTosend = JSON.stringify(this.dataExchange);
         //send the data
         if(this.client[from]!=null) {
             this.client[from].send(strDataTosend);
@@ -89,9 +90,9 @@ class GameServer {
 
     startLauncher(client, game) {
         //lanch a game only
-        this.launcher.lanchGame(game.gameId);
+        this.launcher.launchGame(game.gameId);
         //then send to the monitor to charge the game
-        if(this.client['monitor']!==undefined) {
+        /*if(this.client['monitor']!==undefined) {
             let req = {
                 header: {
                     type: "request",
@@ -108,7 +109,7 @@ class GameServer {
             if(this.client['monitor']!=null && this.client['monitor']!==undefined){
                 this.client['monitor'].send(JSON.stringify(req));
             }
-        }
+        }*/
 
     }
 
@@ -127,7 +128,8 @@ class GameServer {
             }
             
         };
-        
+        console.log("sendAll");
+        console.log(data);
         this.sendAll(from, data);
     }
 

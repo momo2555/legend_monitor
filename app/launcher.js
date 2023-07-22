@@ -55,16 +55,6 @@ class Launcher {
             }
         });
         this.routes.push({
-            url: '/lib/legend.js',
-            callback: (req, res) => {
-                res.setHeader("Content-Type", "text/javascript");
-                res.writeHead(200);
-                fs.readFile('app/lib/legend.js', (err, data)=>{
-                    res.end(data);
-                });
-            }
-        });
-        this.routes.push({
             url: '/lib/startPage.js',
             callback: (req, res) => {
                 res.setHeader("Content-Type", "text/javascript");
@@ -74,54 +64,11 @@ class Launcher {
                 });
             }
         });
-        this.routes.push({
-            url: '/lib/jquery.js',
-            callback: (req, res) => {
-                res.setHeader("Content-Type", "text/javascript");
-                res.writeHead(200);
-                fs.readFile('app/lib/jquery.js', (err, data)=>{
-                    res.end(data);
-                });
-            }
-        });
     }
+    launchGame(game) {
 
-
-    lanchGame(gameId) {
-        //reading the game.json file
-        let data = fs.readFileSync('app/games/'+gameId+'/game.json', {encoding: 'utf8'});
-        //parse json
-        let parsedata = JSON.parse(data);
-        //fetch in the games folder for all files
-        let gameFolder = 'app/games/'+gameId;
-        //add files in the htto route
-        glob(gameFolder + "/**", (err, files) => {
-            for(const file of files){
-                if(fs.existsSync(file)){
-                    
-                    var url = file.replace(gameFolder, '');
-                    
-                    if(! this.routeExists(url) ) {
-                        this.routes.push({
-                            url: url,
-                            callback: (req, res) => {
-                                res.setHeader("Content-Type",this.getContentType(file));
-                                res.writeHead(200);
-                                fs.readFile(file, (err, data)=>{
-                                    res.end(data);
-                                });
-                            }
-                        });
-                    }
-                    
-                }
-            }
-        });
-        //the game is launched
-       
-        
     }
-    getContentType(file) {
+    /*getContentType(file) {
         let contentType = "";
                 let ext = "";
                 let fileSplit = file.split('.');
@@ -156,7 +103,7 @@ class Launcher {
             if(route.url == routeUrl) exist = true;
         }
         return exist;
-    }
+    }*/
 
 }
 module.exports = Launcher;
